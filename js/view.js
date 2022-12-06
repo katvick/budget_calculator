@@ -33,79 +33,6 @@ var viewController = (function() {
         }
     }
 
-    // function formatNumber(num, type) {
-    //     var numSplit, int, dec, newInt, resultNumber;
-        
-    //     /*
-    //     + или - перед числом в зависимости от типа числа
-    //     два знака после точки, десятые и сотые
-    //     50 -> 50.00
-    //     87.56984549211 -> 87.56
-    //     */
-    //     num = Math.abs(num) // abs возвращает абсолютное число -> Math.abs(-10) = 10
-    //     // Приводим к 2-м цифрам после точки
-    //     num = num.toFixed(2);
-
-    //     /*
-    //     123000 -> 123,000.00
-    //     */
-    //     numSplit = num.split('.'); // 45.78 -> [45, 78]
-    //     // Целая часть
-    //     int = numSplit[0]; // 45
-    //     // Десятые, от исходной строки
-    //     dec = numSplit[1]; // 78
-
-    //     // Расставляем запятые 
-    //     // Исходя из длины числа делим его на части по 3 цифры
-    //     // Если длина номера больше, чем 3 цифры, значит ставим запятые
-    //     if (int.length > 3) {
-    //         newInt = '';
-            
-    //         // 1 2 3 4 5 6 7 8 9 -- число по цифрам
-    //         // 0 1 2 3 4 5 6 7 8 -- по индексам в массиве
-
-    //         // Нам нужно понять, сколько раз будет по 3 цифры -> делим свойство length на 3
-    //         for (var i = 0; i < int.length / 3; i++) {
-                
-    //             // формируем новую сттроку с номером
-    //             newInt =
-    //                 // Добавляем запятую каждые 3 цифры
-    //             ',' +
-    //             // Вырезанный кусок из исходной строки
-    //             // Метод substring() возвращает подстроку строки между двумя индексами, или от одного индекса и до конца строки.
-    //             int.substring(int.length - 3 * (i + 1), int.length - 3 * i) +
-    //             // Конец строки, первая часть
-    //             newInt;
-
-    //         }
-
-    //         // Убираем запятую в начале, если она есть
-    //         if (newInt[0] === ',') {
-    //             newInt = newInt.substring(1);
-    //         }
-
-    //     // Если исходное число равно 0, то в новую строку записываем 0
-    //     } else if (int === '0') {
-    //         newInt = '0';
-    //     // Если исходное целое число имеет 3 и менее символов
-    //     } else {
-    //         newInt = int;
-    //     }
-
-    //     resultNumber = newInt + '.' + dec;
-
-    //     if (num == 0) {
-    //         resultNumber = 0;
-    //     } else if (type === 'exp') {
-    //         resultNumber = '- ' + resultNumber;
-    //     } else if (type === 'inc') {
-    //         resultNumber = '+ ' + resultNumber;
-    //     }
-
-    //     return resultNumber;
-
-    // }
-
     /* АЛЬТЕРНАТИВНЫЙ СПОСОБ ФОРМАТИРОВАНИЯ ЧИСЛА */ 
     function formatNumber(num, type) {
         var [int, dec] = Math.abs(num).toFixed(2).split('.');
@@ -159,11 +86,6 @@ var viewController = (function() {
                     </li>`
             // указали placeholder %id%, %description% и %value
         }
-
-        // вставляем разметку в DOM
-        // newHtml = html.replace("%id%", obj.id);
-        // newHtml = newHtml.replace("%description%", obj.description);
-        // newHtml = newHtml.replace("%value%", formatNumber(obj.value, type));
         
         document.querySelector(containerElement).insertAdjacentHTML('beforeend', html)
     }
